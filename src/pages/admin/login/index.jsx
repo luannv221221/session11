@@ -17,7 +17,7 @@ function Login() {
     };
     const handleSumit = () => {
         dispatch(login({ userName: "Admin", password: "123456" }))
-            .unwrap().then((res) => {
+            .then((res) => {
                 let roles = res.data.roles;
 
                 if (roles.some((role) => role.roleName === "ADMIN")) {
