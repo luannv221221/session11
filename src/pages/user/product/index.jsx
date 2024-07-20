@@ -1,11 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Container, Row } from 'react-bootstrap'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import useDedounce from '../../../hook/useDebounce';
+import { getProductSearch } from '../../../services/productService';
 
 function ProductSearch() {
+    const [searchParams] = useSearchParams();
+    const keyowrd = searchParams.get('q'); // "testCode"
+    const debounceSearch = useDedounce(keyowrd, 1000);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    if (keyowrd == null) {
+        navigate("/")
+    }
+    useEffect(() => {
+        dispatch(getProductSearch({ searchText: keyowrd }));
+    }, [debounceSearch]);
     const products = useSelector((state) => {
         return state.product.products;
-    })
+    });
+
     return (
         <Container>
             <Row>

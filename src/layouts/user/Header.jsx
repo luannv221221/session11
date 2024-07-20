@@ -1,20 +1,29 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Header } from 'antd/es/layout/layout'
-import { useNavigate } from 'react-router-dom';
+import { createSearchParams, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getProductSearch } from '../../services/productService';
+import useDedounce from '../../hook/useDebounce';
 function Menu() {
     const [search, setSearch] = useState('');
     const navigate = useNavigate();
-    const dispatch = useDispatch();
+
     const heandleSearch = (value) => {
         setSearch(value);
-        navigate("/search");
+
+        navigate({
+            pathname: "search",
+            search: createSearchParams({
+                q: value
+            }).toString()
+        })
+
         if (value == '') {
             navigate("/")
         }
-        dispatch(getProductSearch({ searchText: value }));
+
     }
+
     return (
         <>
             <nav
