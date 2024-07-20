@@ -4,7 +4,6 @@ export const BASE_FILE = axios.create({
     baseURL: "http://localhost:8080/api/v1/",
     headers: {
         "Content-Type": "multipart/form-data",
-
     }
 });
 export const BASE_URL = axios.create({
