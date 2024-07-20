@@ -16,7 +16,6 @@ export const authSilce = createSlice({
             state.loading = true;
         });
         builder.addCase(login.fulfilled, (state, action) => {
-            console.log(action.payload);
             state.data = action.payload.data;
             state.loading = false;
         });

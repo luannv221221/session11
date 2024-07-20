@@ -1,10 +1,12 @@
+
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-
+import Menu from './Header'
+import 'bootstrap/dist/css/bootstrap.min.css';
 function LayoutIndex() {
     return (
         <>
-            <div>Header</div>
+            <Menu />
             <Outlet></Outlet>
         </>
 

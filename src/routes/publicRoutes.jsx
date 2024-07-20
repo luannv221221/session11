@@ -2,6 +2,7 @@
 import LayoutIndex from "../layouts/user/LayoutIndex";
 import Home from "../pages/user/home";
 import Login from "../pages/admin/login";
+import ProductSearch from "../pages/user/product";
 
 const publicRoutes = [
     {
@@ -16,6 +17,11 @@ const publicRoutes = [
                 path: "home",
                 element: <Home />
             },
+            {
+                path: "search",
+                element: <ProductSearch />
+            },
+
         ],
     },
     {
