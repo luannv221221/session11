@@ -9,6 +9,7 @@ const publicRoutes = [
         path: "/",
         element: <LayoutIndex />,
         children: [
+            
             {
                 index: true,
                 element: <Home />

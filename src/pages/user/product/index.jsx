@@ -11,11 +11,16 @@ function ProductSearch() {
     const debounceSearch = useDedounce(keyowrd, 1000);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    if (keyowrd == null) {
-        navigate("/")
-    }
+
+
     useEffect(() => {
+        if (keyowrd == null) {
+            console.log(1);
+            navigate("/");
+
+        }
         dispatch(getProductSearch({ searchText: keyowrd }));
+
     }, [debounceSearch]);
     const products = useSelector((state) => {
         return state.product.products;
